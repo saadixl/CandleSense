@@ -50,8 +50,10 @@ def main():
     for sample_image_path in sample_images_file_paths:
         closest_match, similarity_score = get_closest_match(sample_image_path, training_embeddings)
         closest_match_filename = os.path.basename(closest_match)
+        price_movement_prediction = 'down' if closest_match_filename.startswith('d') else 'up'
+        closest_match_chart_type = os.path.splitext(closest_match_filename)[0][2:]
         sample_image_filename = os.path.basename(sample_image_path)
         formatted_percentage_str = f"{similarity_score*100:.2f}%"
-        print(f"Sample image: {sample_image_filename}\nClosest match: {closest_match_filename}\nSimilarity score: {formatted_percentage_str}")
+        print(f"Sample file\t: {sample_image_filename}\nClosest match\t: {closest_match_filename}\nSimilarity score: {formatted_percentage_str}\n\033[1m{closest_match_chart_type} indicates price may go {price_movement_prediction}\033[0m\n")
 
 main()
