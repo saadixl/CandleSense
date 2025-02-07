@@ -51,6 +51,7 @@ def main():
         closest_match, similarity_score = get_closest_match(sample_image_path, training_embeddings)
         closest_match_filename = os.path.basename(closest_match)
         sample_image_filename = os.path.basename(sample_image_path)
-        print(f"Sample image: {sample_image_filename}\nClosest match: {closest_match_filename}\nSimilarity score: {round(similarity_score*100, 2)}%")
+        formatted_percentage_str = f"{similarity_score*100:.2f}%"
+        print(f"Sample image: {sample_image_filename}\nClosest match: {closest_match_filename}\nSimilarity score: {formatted_percentage_str}")
 
 main()
