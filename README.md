@@ -7,9 +7,5 @@ This is a project to predict price movement of a stock based on it's candle stic
 - Add your openai api key under `OPENAI_API_KEY`
 - Run `pip3 install -r src/requirements.txt` to install the python packages
 - Run `python3 src/main.py`
-Upon running the command, you will see a result like this:
-```
-Sample image: nvda_1.png
-Closest match: d-shooting-star.png
-Similarity score: 79.76%
-```
+Upon running the command, follow the terminal instructions.
+<img width="738" alt="csss" src="https://github.com/user-attachments/assets/a72fbc3e-54dd-4445-baf2-5acec0a67083" />
