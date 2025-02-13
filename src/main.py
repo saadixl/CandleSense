@@ -80,11 +80,14 @@ def main():
         ticker = user_input.upper()
         print_line()
         print("\nGetting candle stick chart for " + ticker)
-        stock = yf.Ticker(ticker)
-        df = stock.history(period="30d")
-        new_file_name = ticker +".png"
-        mpf.plot(df, type="candle", style="charles", volume=True, savefig="data/sample_images/" + new_file_name)
-        print("Candle stick chart " + new_file_name + " saved.\nInterpretting new chart...")
-        interpret_sample_file(new_file_name, training_embeddings)
-        print_line()
+        try:
+            stock = yf.Ticker(ticker)
+            df = stock.history(period="30d")
+            new_file_name = ticker +".png"
+            mpf.plot(df, type="candle", style="charles", volume=True, savefig="data/sample_images/" + new_file_name)
+            print("Candle stick chart " + new_file_name + " saved.\nInterpretting new chart...")
+            interpret_sample_file(new_file_name, training_embeddings)
+            print_line()
+        except:
+            print(ticker + " seems like an invalid ticker. Please try again!\n")
 main()
