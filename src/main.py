@@ -8,6 +8,7 @@ from config import OPENAI_API_KEY
 from sklearn.metrics.pairwise import cosine_similarity
 import yfinance as yf
 import mplfinance as mpf
+import subprocess
 
 openai.api_key = OPENAI_API_KEY
 
@@ -58,6 +59,9 @@ def delete_all_sample_images():
 def print_line():
     print("--------------------------------------------------------")
 
+def display_image(image_path):
+    subprocess.run(["imgcat", image_path])
+
 def main():
     # Generating embeddings for training images
     print("Program started.")
@@ -81,8 +85,13 @@ def main():
             df = stock.history(period="30d")
             new_file_name = ticker +".png"
             # Create a candle list chart image from the data
-            mpf.plot(df, type="candle", style="charles", volume=True, savefig="data/sample_images/" + new_file_name)
-            print("Candle stick chart " + new_file_name + " saved.\nInterpretting new chart...")
+            new_file_path = "data/sample_images/" + new_file_name
+            mpf.plot(df, type="candle", style="charles", volume=True, savefig=new_file_path)
+            try:
+                display_image(new_file_path)
+            except:
+                print("Can't display candle chart image. Please use iTerm.")
+            print("New candle stick chart saved to " + new_file_path + "\nInterpretting new chart...")
             # Interpret the newly created chart
             interpret_sample_file(new_file_name, training_embeddings)
             print_line()
