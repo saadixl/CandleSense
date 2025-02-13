@@ -8,4 +8,6 @@ This is a project to predict price movement of a stock based on it's candle stic
 - Run `pip3 install -r src/requirements.txt` to install the python packages
 - Run `python3 src/main.py`
 Upon running the command, follow the terminal instructions.
-<img width="738" alt="csss" src="https://github.com/user-attachments/assets/a72fbc3e-54dd-4445-baf2-5acec0a67083" />
+<img width="600" alt="ss" src="https://github.com/user-attachments/assets/426bfc34-5ac8-426f-abee-94a9ecde8a64" />
+
+Note that the candle chart for entered ticker can be only seen on MacOS iTerm.
